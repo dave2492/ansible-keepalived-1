@@ -21,6 +21,7 @@ global_defs {
 }
 {% endif %}
 
+{% if keepalived_sync_groups is defined %}
 {% for name, sync_group in keepalived_sync_groups.items() %}
 vrrp_sync_group {{ name }} {
   group {
@@ -42,6 +43,7 @@ vrrp_sync_group {{ name }} {
   {% endif %}
 }
 {% endfor %}
+{% endif %}
 
 {% if keepalived_scripts is defined %}
 {% for name, details in keepalived_scripts.items() %}
